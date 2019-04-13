@@ -1,3 +1,5 @@
+import BaseButton from './components/BaseButton.vue'
+
 <template>
   <div id="app">
     <div id="nav">
