@@ -1,7 +1,11 @@
 <template>
   <button :disabled="disabled" v-on:click="clickHandler(callback)">
-    <span v-if="disabled"> {{ loaderMessage }} </span>
-    <span v-else="disabled"> {{ message }} </span>
+    <slot name="loadingMessage" v-if="disabled">
+      Loading...
+    </slot>
+    <slot name="message" v-else>
+      Click me hard please.
+    </slot>
   </button>
 </template>
 
@@ -10,18 +14,11 @@ export default {
   name: 'BaseButton',
   data: function() {
     return {
-      disabled: false
+      disabled: false,
+      loderMessage: 'loading',
     }
   },
   props: {
-    message: {
-      type: String,
-      default: "click me hard please"
-    },
-    loaderMessage: {
-      type: String,
-      default: "loading"
-    },
     callback: {
       type: Function,
       default: function(callback) {
@@ -33,7 +30,7 @@ export default {
     clickHandler: function(callback) {
       let that = this
       this.disabled = true
-      this.callback(function() { that.disabled = false})
+      this.callback(function() { that.disabled = false })
     }
   }
 }

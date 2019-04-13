@@ -1,6 +1,13 @@
 <template>
   <div class="home">
-  <ButtonWithLoader/>
+  <ButtonWithLoader>
+    <template #message>
+      Click me in a custom way
+    </template>
+    <template #loadingMessage>
+      Wait for me
+    </template>
+  </ButtonWithLoader>
   </div>
 </template>
 
